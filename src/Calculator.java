@@ -11,30 +11,82 @@ public class Calculator implements ActionListener {
     JButton addButton, subButton, mulButton, divButton;
     JButton decButton, equButton, delButton, clrButton, negButton;
     JPanel panel;
-    Font myFont = new Font("MV Boli", Font.BOLD, 35);
+    Font myFont = new Font("MV Boli", Font.BOLD, 25);
     double num1, num2, result = 0;
     char operator;
 
     Calculator() {
+        JLabel label = new JLabel();
+        label.setOpaque(true);
+        label.setBounds(0, 0, 410, 530);
+        label.setBackground(Color.black);
+
         frame = new JFrame("CALCULATOR");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(410, 530);
+        frame.setSize(new Dimension(410, 530));
         frame.setLayout(null);
 
         textField = new JTextField();
         textField.setBounds(50, 25, 300, 50);
         textField.setFont(myFont);
-        textField.setEditable(false);//can't edit textfield
+        textField.setEditable(true);
+        textField.setBackground(Color.black);
+        textField.setCaretColor(Color.yellow);
+        textField.setForeground(Color.yellow);
 
         addButton = new JButton("+");
+        addButton.setForeground(Color.yellow);
+        addButton.setBackground(Color.black);
+        addButton.setOpaque(true);
+        addButton.setBorderPainted(false);
+
         subButton = new JButton("-");
+        subButton.setForeground(Color.yellow);
+        subButton.setBackground(Color.black);
+        subButton.setOpaque(true);
+        subButton.setBorderPainted(false);
+
         mulButton = new JButton("*");
+        mulButton.setForeground(Color.yellow);
+        mulButton.setBackground(Color.black);
+        mulButton.setOpaque(true);
+        mulButton.setBorderPainted(false);
+
         divButton = new JButton("/");
+        divButton.setForeground(Color.yellow);
+        divButton.setBackground(Color.black);
+        divButton.setOpaque(true);
+        divButton.setBorderPainted(false);
+
         decButton = new JButton(".");
+        decButton.setForeground(Color.yellow);
+        decButton.setBackground(Color.black);
+        decButton.setOpaque(true);
+        decButton.setBorderPainted(false);
+
         equButton = new JButton("=");
+        equButton.setForeground(Color.yellow);
+        equButton.setBackground(Color.black);
+        equButton.setOpaque(true);
+        equButton.setBorderPainted(false);
+
         delButton = new JButton("DEL");
+        delButton.setForeground(Color.yellow);
+        delButton.setBackground(Color.black);
+        delButton.setOpaque(true);
+        delButton.setBorderPainted(false);
+
         clrButton = new JButton("CLEAR");
+        clrButton.setForeground(Color.yellow);
+        clrButton.setBackground(Color.black);
+        clrButton.setOpaque(true);
+        clrButton.setBorderPainted(false);
+
         negButton = new JButton("(-)");
+        negButton.setForeground(Color.yellow);
+        negButton.setBackground(Color.black);
+        negButton.setOpaque(true);
+        negButton.setBorderPainted(false);
 
         functions[0] = addButton;
         functions[1] = subButton;
@@ -57,6 +109,10 @@ public class Calculator implements ActionListener {
             numbers[i].addActionListener(this);
             numbers[i].setFont(myFont);
             numbers[i].setFocusable(false);
+            numbers[i].setForeground(Color.yellow);
+            numbers[i].setBackground(Color.black);
+            numbers[i].setOpaque(true);
+            numbers[i].setBorderPainted(false);
         }
 
         negButton.setBounds(25, 430, 85, 50);
@@ -66,7 +122,7 @@ public class Calculator implements ActionListener {
         panel = new JPanel();
         panel.setBounds(50, 100, 300, 300);
         panel.setLayout(new GridLayout(4, 4, 10, 10));
-        panel.setBackground(Color.BLACK);
+        panel.setBackground(Color.black);
 
         panel.add(numbers[1]);
         panel.add(numbers[2]);
@@ -85,12 +141,12 @@ public class Calculator implements ActionListener {
         panel.add(equButton);
         panel.add(divButton);
 
-
-        frame.add(panel);
-        frame.add(negButton);
-        frame.add(clrButton);
-        frame.add(delButton);
-        frame.add(textField);
+        label.add(panel);
+        label.add(negButton);
+        label.add(clrButton);
+        label.add(delButton);
+        label.add(textField);
+        frame.add(label);
         frame.setVisible(true);
     }
     public static void main(String[] args) {
@@ -138,18 +194,10 @@ public class Calculator implements ActionListener {
             num2 = Double.parseDouble(textField.getText());
 
             switch (operator) {
-                case'+':
-                    result = num1 + num2;
-                    break;
-                case'-':
-                    result = num1 +-num2;
-                    break;
-                case'*':
-                    result = num1 * num2;
-                    break;
-                case'/':
-                    result = num1 / num2;
-                    break;
+                case '+' -> result = num1 + num2;
+                case '-' -> result = num1 - num2;
+                case '*' -> result = num1 * num2;
+                case '/' -> result = num1 / num2;
             }
 
             textField.setText(String.valueOf(result));
