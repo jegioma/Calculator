@@ -14,6 +14,10 @@ public class Calculator implements ActionListener {
     Font myFont = new Font("MV Boli", Font.BOLD, 25);
     double num1, num2, result = 0;
     char operator;
+    Action[] numPad = new Action[10];
+    Action[] funPad = new Action[9];
+    Action add, sub, mul, div, dec, equ, del, clr, neg;
+
 
     Calculator() {
         JLabel label = new JLabel();
@@ -33,6 +37,19 @@ public class Calculator implements ActionListener {
         textField.setBackground(Color.black);
         textField.setCaretColor(Color.yellow);
         textField.setForeground(Color.yellow);
+
+        /*
+        attempt to try to create an Action
+         */
+        add = new Add();
+//        sub = new Sub();
+//        mul = new Mul();
+//        div = new Div();
+//        dec = new Dec();
+//        equ = new Equ();
+//        del = new Del();
+//        clr = new Clr();
+//        neg = new Neg();
 
         addButton = new JButton("+");
         addButton.setForeground(Color.yellow);
@@ -149,10 +166,6 @@ public class Calculator implements ActionListener {
         frame.add(label);
         frame.setVisible(true);
     }
-    public static void main(String[] args) {
-        Calculator calc = new Calculator();
-
-    }
 
     @Override
     public void actionPerformed(ActionEvent event) {
@@ -221,5 +234,19 @@ public class Calculator implements ActionListener {
             temp *= -1;
             textField.setText(String.valueOf(temp));
         }
+    }
+
+    public class Add extends AbstractAction {
+        @Override
+        public void actionPerformed(ActionEvent event) {
+            result = num1 + num2;
+            textField.setText(String.valueOf(result));
+            num1 = result;
+        }
+    }
+
+    public static void main(String[] args) {
+        Calculator calc = new Calculator();
+
     }
 }
