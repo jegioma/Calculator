@@ -1,7 +1,17 @@
+/**
+ * Class: Calculator
+ * @author: Jeancarlo Masciotti
+ * @Date: November 13, 2021
+ * @Version 2.3
+ */
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+/**
+ * This is the Calculator GUI application that uses the basic functions of a calculator
+ */
 public class Calculator implements ActionListener {
 
     JLabel label;
@@ -16,6 +26,9 @@ public class Calculator implements ActionListener {
     double num1, num2, result = 0;
     char operator;
 
+    /**
+     * Calculator constructor that contains the GUI of the application
+     */
     Calculator() {
         label = new JLabel();
         label.setOpaque(true);
@@ -111,6 +124,10 @@ public class Calculator implements ActionListener {
         frame.setVisible(true);
     }
 
+    /**
+     * actionPerformed Method
+     * @param event - this is the operator or function button that is selected
+     */
     @Override
     public void actionPerformed(ActionEvent event) {
         for (int i = 0; i < 10; i++) {
@@ -180,6 +197,10 @@ public class Calculator implements ActionListener {
         }
     }
 
+    /**
+     * Main Method
+     * @param args
+     */
     public static void main(String[] args) {
         Calculator calc = new Calculator();
 
